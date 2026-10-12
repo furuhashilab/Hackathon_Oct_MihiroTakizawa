@@ -22,6 +22,45 @@ SotM Asia 2026 Osaka の **NANBA Wheelchair Mapping Party** に着想を得て�
 
 データは 2026年10月13日に Overpass API で取得しました。
 
+## アクセスマップ
+
+GitHub 上では、下の地図を拡大・縮小できます。ピンをクリックすると施設の情報が表示されます。
+
+```geojson
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [139.4378867, 35.5321708] },
+      "properties": { "name": "相模大野駅", "種別": "駅", "wheelchair": "yes", "osm": "https://www.openstreetmap.org/node/264240113" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [139.3931145, 35.5381675] },
+      "properties": { "name": "北里大学病院", "種別": "病院", "wheelchair": "yes", "toilets:wheelchair": "yes", "osm": "https://www.openstreetmap.org/node/1420814835" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [139.3930755, 35.5593079] },
+      "properties": { "name": "相模原市立博物館", "種別": "博物館", "wheelchair": "yes", "osm": "https://www.openstreetmap.org/node/1420828722" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [139.392913, 35.567575] },
+      "properties": { "name": "相模原市立図書館", "種別": "図書館", "wheelchair": "yes", "toilets:wheelchair": "yes", "osm": "https://www.openstreetmap.org/node/1420828741" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [139.1898241, 35.6169398] },
+      "properties": { "name": "相模湖駅前公衆便所", "種別": "公衆トイレ", "wheelchair": "yes", "osm": "https://www.openstreetmap.org/node/3353550337" }
+    }
+  ]
+}
+```
+
+ピンの表示やポップアップをより作り込んだ地図は、[index.html](index.html) をブラウザで開くと見られます。
+
 ## 使用技術
 
 - **OpenStreetMap**：地図タイルと施設の車椅子アクセス情報
