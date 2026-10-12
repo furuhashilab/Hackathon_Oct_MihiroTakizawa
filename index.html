@@ -1,1 +1,65 @@
-今回、
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相模原市 車椅子アクセスマップ</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    body { margin: 0; font-family: sans-serif; }
+    header { padding: 12px 16px; background: #1e5aa8; color: #fff; }
+    header h1 { margin: 0 0 6px; font-size: 1.3em; }
+    header p { margin: 0; }
+    #map { height: 70vh; }
+    footer { padding: 10px 16px; font-size: 0.85em; color: #333; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>相模原市 車椅子アクセスマップ</h1>
+    <p>SotM Asia 2026 OsakaのNANBA Wheelchair Mapping Partyに着想を得て、相模原市の車椅子アクセスマップを作成しました。</p>
+  </header>
+
+  <div id="map"></div>
+
+  <footer>
+    <p>地図データ・施設情報: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>（ODbL）。2026年10月13日にOverpass APIで取得した <code>wheelchair</code> タグの情報です。</p>
+    <p>本作品は <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">クリエイティブ・コモンズ 表示 4.0 国際 (CC BY 4.0)</a> ライセンスの下で提供されています。</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    // OpenStreetMap上で wheelchair タグが付いている相模原市内の施設
+    var places = [
+      { name: '相模大野駅', type: '駅', lat: 35.5321708, lon: 139.4378867, wheelchair: 'yes', osm: 'node/264240113' },
+      { name: '北里大学病院', type: '病院', lat: 35.5381675, lon: 139.3931145, wheelchair: 'yes', toilets: 'yes', osm: 'node/1420814835' },
+      { name: '相模原市立博物館', type: '博物館', lat: 35.5593079, lon: 139.3930755, wheelchair: 'yes', osm: 'node/1420828722' },
+      { name: '相模原市立図書館', type: '図書館', lat: 35.567575, lon: 139.392913, wheelchair: 'yes', toilets: 'yes', osm: 'node/1420828741' },
+      { name: '相模湖駅前公衆便所', type: '公衆トイレ', lat: 35.6169398, lon: 139.1898241, wheelchair: 'yes', osm: 'node/3353550337' }
+    ];
+
+    var labels = { yes: '利用可能', limited: '一部利用可能', no: '利用不可' };
+
+    var map = L.map('map');
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var markers = places.map(function (p) {
+      var html = '<strong>' + p.name + '</strong><br>' +
+        '種別: ' + p.type + '<br>' +
+        '車椅子: ' + labels[p.wheelchair] + ' (wheelchair=' + p.wheelchair + ')';
+      if (p.toilets) {
+        html += '<br>車椅子対応トイレ: あり (toilets:wheelchair=' + p.toilets + ')';
+      }
+      html += '<br><a href="https://www.openstreetmap.org/' + p.osm + '" target="_blank" rel="noopener">OSMで見る</a>';
+      return L.marker([p.lat, p.lon]).bindPopup(html).addTo(map);
+    });
+
+    map.fitBounds(L.featureGroup(markers).getBounds().pad(0.1));
+  </script>
+</body>
+</html>
