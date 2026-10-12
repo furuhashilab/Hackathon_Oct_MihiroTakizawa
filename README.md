@@ -1,7 +1,7 @@
 # 相模原市 車椅子アクセスマップ
 
 OpenStreetMap（OSM）に登録されている車椅子アクセス情報（`wheelchair` タグ）を使い、相模原市内の施設を地図上に表示するハッカソン作品です。
-https://furuhashilab.github.io/Hackathon_Oct_MihiroTakizawa/
+
 
 ## 着想
 
