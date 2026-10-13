@@ -64,6 +64,7 @@ GitHub 上では、下の地図を拡大・縮小できます。ピンをクリ�
 ## 使用技術
 
 - **OpenStreetMap**：地図タイルと施設の車椅子アクセス情報
+- **[Wheelmap](https://wheelmap.org/)**：OSM の `wheelchair` タグ（yes / limited / no）を使った車椅子アクセス情報の閲覧・登録サービス。分類の考え方と情報の確認に参考にしました
 - **Overpass API**：相模原市内の `wheelchair` タグ付き施設の検索
 - **Leaflet.js**（v1.9.4）：Web地図の表示
 - **HTML / JavaScript**：`index.html` だけで動くシンプルな構成
