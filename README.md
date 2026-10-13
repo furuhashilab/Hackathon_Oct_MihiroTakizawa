@@ -5,7 +5,7 @@ OpenStreetMap（OSM）に登録されている車椅子アクセス情報（`whe
 
 ## 着想
 
-SotM Asia 2026 Osaka の **NANBA Wheelchair Mapping Party** に着想を得て、相模原市の車椅子アクセスマップを作成しました。
+SotM Asia 2026 Osaka の ** Wheelchair Mapping ** に着想を得て、相模原市の車椅子アクセスマップを作成しました。
 
 ## 概要
 
